@@ -1,0 +1,26 @@
+<!-- ==========================================================================
+     FaceGuard AI — Reusable Statistics Metric Card Component (templates/components/stats_card.html)
+     ========================================================================== -->
+<!-- BACKEND:
+Parameters passed via include:
+- stat_title: Label (e.g. "Total Detections")
+- stat_value: Numeric value (e.g. 1,482)
+- stat_icon: Bootstrap icon class (e.g. "bi-camera-video")
+- stat_bg_class: Background styling class
+- stat_color_class: Text color class
+- stat_trend: Trend text (e.g. "+12% today")
+-->
+<div class="stat-card">
+  <div>
+    <div class="stat-label">{{ stat_title|default:"Total Detections" }}</div>
+    <div class="stat-value">{{ stat_value|default:"1,248" }}</div>
+    {% if stat_trend %}
+    <div class="small {{ stat_trend_color|default:'text-success' }} d-flex align-items-center gap-1">
+      <i class="bi bi-arrow-up-right"></i> {{ stat_trend }}
+    </div>
+    {% endif %}
+  </div>
+  <div class="stat-icon {{ stat_icon_bg|default:'feature-icon-blue' }}">
+    <i class="bi {{ stat_icon|default:'bi-graph-up' }}"></i>
+  </div>
+</div>

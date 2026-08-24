@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Detection History — FaceGuard AI{% endblock %}
+{% block content %}
+<div class="py-4 bg-white border-bottom"><div class="container d-flex justify-content-between align-items-center gap-3"><div><span class="badge bg-secondary-subtle text-secondary mb-1"><i class="bi bi-shield-lock"></i> Compliance Audit Trail</span><h1 class="fw-bold fs-3 mb-0">Detection History</h1></div><a href="{% url 'live_detection' %}" class="btn btn-primary-custom btn-sm"><i class="bi bi-camera-video"></i> New Detection</a></div></div>
+<div class="container py-5">
+  <form method="get" class="card-custom p-3 mb-4 bg-white"><div class="row g-3 align-items-center">
+    <div class="col-12 col-md-6"><input type="search" name="q" value="{{ query }}" class="form-control" placeholder="Search by ID or prediction"></div>
+    <div class="col-8 col-md-3"><select name="status" class="form-select"><option value="all">All detections</option><option value="Mask" {% if status == 'Mask' %}selected{% endif %}>Mask only</option><option value="No Mask" {% if status == 'No Mask' %}selected{% endif %}>No mask only</option></select></div>
+    <div class="col-4 col-md-3"><button class="btn btn-primary w-100" type="submit"><i class="bi bi-search"></i> Filter</button></div>
+  </div></form>
+  <div class="card-custom bg-white shadow-sm overflow-hidden"><div class="table-responsive"><table class="table table-custom table-hover align-middle mb-0">
+    <thead><tr><th>#</th><th>Image</th><th>Prediction</th><th>Confidence</th><th>Date</th><th>Time</th><th></th></tr></thead><tbody>
+    {% for detection in detections %}<tr><td class="fw-bold text-muted">#{{ detection.id }}</td><td><img src="{{ detection.image.url }}" alt="Detection" class="table-thumbnail"></td><td>{% if detection.prediction == 'Mask' %}<span class="badge-mask"><i class="bi bi-check-circle-fill"></i> Mask</span>{% else %}<span class="badge-no-mask"><i class="bi bi-x-circle-fill"></i> No Mask</span>{% endif %}</td><td><strong>{{ detection.confidence|floatformat:2 }}%</strong></td><td>{{ detection.created_at|date:'d M Y' }}</td><td>{{ detection.created_at|date:'h:i A' }}</td><td class="text-end"><a href="{% url 'detection_result' detection.id %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> View</a></td></tr>
+    {% empty %}<tr><td colspan="7" class="text-center py-5"><i class="bi bi-inbox fs-1 text-muted"></i><h5 class="mt-2">No detections found</h5><a href="{% url 'image_detection' %}" class="btn btn-primary-custom btn-sm mt-2">Start Detection</a></td></tr>{% endfor %}
+    </tbody></table></div></div>
+  {% if page_obj.paginator.num_pages > 1 %}<nav class="mt-4"><ul class="pagination justify-content-center">{% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="?q={{ query|urlencode }}&status={{ status|urlencode }}&page={{ page_obj.previous_page_number }}">Previous</a></li>{% endif %}<li class="page-item active"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>{% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="?q={{ query|urlencode }}&status={{ status|urlencode }}&page={{ page_obj.next_page_number }}">Next</a></li>{% endif %}</ul></nav>{% endif %}
+</div>
+{% endblock %}

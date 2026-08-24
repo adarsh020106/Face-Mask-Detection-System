@@ -1,0 +1,78 @@
+<!-- ==========================================================================
+     FaceGuard AI — Reusable Prediction Result Card Component (templates/components/prediction_card.html)
+     ========================================================================== -->
+<!-- BACKEND:
+Prediction variables supplied by Django View:
+- prediction: "Mask" or "No Mask"
+- confidence: e.g. 96.85 (percentage)
+- inference_time: e.g. "42ms"
+- timestamp: e.g. "Aug 21, 2026 09:30 AM"
+- image_url: URL to processed or cropped image
+-->
+<div class="card-custom shadow-sm">
+  <div class="card-custom-header">
+    <span class="fw-bold text-dark d-flex align-items-center gap-2">
+      <i class="bi bi-cpu text-primary"></i> Neural Network Prediction
+    </span>
+    <span class="badge {% if prediction == 'Mask' or prediction == 'mask' or is_mask %}bg-success-subtle text-success border border-success-subtle{% else %}bg-danger-subtle text-danger border border-danger-subtle{% endif %} px-3 py-1 rounded-pill">
+      {% if prediction == 'Mask' or prediction == 'mask' or is_mask %}
+        <i class="bi bi-shield-check"></i> Mask Detected
+      {% else %}
+        <i class="bi bi-shield-x"></i> No Mask
+      {% endif %}
+    </span>
+  </div>
+  <div class="card-custom-body">
+    <!-- Main Result Callout -->
+    <div class="prediction-result-banner {% if prediction == 'Mask' or prediction == 'mask' or is_mask %}mask-detected{% else %}no-mask-detected{% endif %}">
+      <h3 class="fw-bold mb-1 d-flex align-items-center justify-content-center gap-2">
+        {% if prediction == 'Mask' or prediction == 'mask' or is_mask %}
+          <i class="bi bi-check-circle-fill text-success fs-2"></i> MASK DETECTED
+        {% else %}
+          <i class="bi bi-x-circle-fill text-danger fs-2"></i> NO MASK DETECTED
+        {% endif %}
+      </h3>
+      <p class="mb-0 small opacity-75">
+        Target compliance verified with high-confidence facial keypoint mapping.
+      </p>
+    </div>
+
+    <!-- Confidence Score Metric -->
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="text-muted small fw-semibold">Model Confidence</span>
+        <span class="fw-bold text-dark fs-5">{{ confidence|default:"97.4" }}%</span>
+      </div>
+      <div class="progress confidence-progress">
+        <div 
+          class="progress-bar {% if prediction == 'Mask' or prediction == 'mask' or is_mask %}bg-success{% else %}bg-danger{% endif %}" 
+          role="progressbar" 
+          style="width: {{ confidence|default:'97.4' }}%;" 
+          aria-valuenow="{{ confidence|default:'97.4' }}" 
+          aria-valuemin="0" 
+          aria-valuemax="100">
+        </div>
+      </div>
+    </div>
+
+    <!-- Detection Metadata Grid -->
+    <div class="row g-2 pt-2 border-top text-muted small">
+      <div class="col-6">
+        <span class="d-block text-secondary">Inference Latency</span>
+        <strong class="text-dark">{{ inference_time|default:"38 ms" }}</strong>
+      </div>
+      <div class="col-6">
+        <span class="d-block text-secondary">Detection Time</span>
+        <strong class="text-dark">{{ timestamp|default:"Just now" }}</strong>
+      </div>
+      <div class="col-6 mt-2">
+        <span class="d-block text-secondary">Input Resolution</span>
+        <strong class="text-dark">224 &times; 224 px</strong>
+      </div>
+      <div class="col-6 mt-2">
+        <span class="d-block text-secondary">Classification Class</span>
+        <strong class="text-dark">Binary (Mask/No-Mask)</strong>
+      </div>
+    </div>
+  </div>
+</div>

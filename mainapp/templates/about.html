@@ -1,0 +1,364 @@
+{% extends 'base.html' %}
+
+{% block title %}About & Architecture — FaceGuard AI{% endblock %}
+
+{% block content %}
+<!-- ==========================================================================
+     FaceGuard AI — About Page (templates/about.html)
+     Explains the Computer Vision pipeline, Deep Learning model, and tech stack
+     ========================================================================== -->
+
+<!-- Page Header Banner -->
+<div class="py-5 bg-white border-bottom">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-8">
+        <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 rounded-pill mb-2">
+          <i class="bi bi-info-circle"></i> System Architecture & Deep Learning
+        </span>
+        <h1 class="fw-bold text-dark mb-2">About FaceGuard AI</h1>
+        <p class="text-muted mb-0 lead fs-6">
+          Understanding the real-world problem, computer vision preprocessing, and neural network architecture behind automated mask compliance.
+        </p>
+      </div>
+      <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
+        <a href="{% url 'live_detection' %}" class="btn btn-primary-custom">
+          <i class="bi bi-play-circle"></i> Test Live System
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+  <!-- 1. What is Face Mask Detection? -->
+  <div class="row g-4 mb-5 align-items-center">
+    <div class="col-12 col-lg-6">
+      <h3 class="fw-bold text-dark mb-3">What is Face Mask Detection?</h3>
+      <p class="text-secondary leading-relaxed">
+        Face Mask Detection is a computer vision task that identifies whether a subject in a digital image or real-time video stream is wearing a protective face covering over their nose and mouth.
+      </p>
+      <p class="text-secondary leading-relaxed">
+        Unlike basic presence detection, modern deep learning architectures analyze subtle spatial features (such as facial contours, strap alignment, nose bridge occlusion, and fabric patterns) to distinguish between standard medical/N95 masks, improper wearing (mouth covered but nose exposed), and bare faces.
+      </p>
+      <div class="card-custom p-3 bg-light border-0">
+        <div class="d-flex align-items-center gap-3">
+          <i class="bi bi-lightbulb-fill text-warning fs-3"></i>
+          <p class="mb-0 small text-dark">
+            <strong>Key Benefit:</strong> Replaces manual checkpoints with automated, contactless compliance monitoring capable of processing dozens of individuals per minute without operational friction.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card-custom p-4 bg-dark text-white border-0 shadow-lg">
+        <h5 class="fw-bold text-info mb-3 d-flex align-items-center gap-2">
+          <i class="bi bi-cpu"></i> Key Performance Objectives
+        </h5>
+        <ul class="list-unstyled d-flex flex-column gap-3 mb-0 small">
+          <li class="d-flex align-items-start gap-2">
+            <i class="bi bi-check2-circle text-success fs-5"></i>
+            <div>
+              <strong>Low-Latency Real-Time Feed:</strong> Sub-50ms inference allows live 30 FPS video parsing at gate turnstiles.
+            </div>
+          </li>
+          <li class="d-flex align-items-start gap-2">
+            <i class="bi bi-check2-circle text-success fs-5"></i>
+            <div>
+              <strong>Robust Lighting Invariance:</strong> Tolerant to direct sunlight, indoor fluorescent glare, and shadows.
+            </div>
+          </li>
+          <li class="d-flex align-items-start gap-2">
+            <i class="bi bi-check2-circle text-success fs-5"></i>
+            <div>
+              <strong>High Confidence Boundary:</strong> Greater than 98% validation accuracy on standard benchmark datasets.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Why It Matters: Real-World Industry Verticals -->
+  <div class="mb-5">
+    <div class="text-center mb-4" style="max-width: 600px; margin: 0 auto;">
+      <h6 class="text-primary fw-bold text-uppercase">Deployment Environments</h6>
+      <h3 class="fw-bold text-dark">Why Automated Mask Detection Matters</h3>
+      <p class="text-muted small">Designed for critical environments requiring continuous safety hygiene and public health protocol compliance.</p>
+    </div>
+
+    <div class="row g-3">
+      <!-- 1. Hospitals -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-custom p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="feature-icon-box feature-icon-green mb-0" style="width: 42px; height: 42px; font-size: 1.2rem;">
+              <i class="bi bi-hospital"></i>
+            </div>
+            <h6 class="fw-bold mb-0 text-dark">Hospitals & Clinics</h6>
+          </div>
+          <p class="text-muted small mb-0">Protects immunocompromised patients, doctors, and nursing staff in sterile cleanroom wings and ICUs.</p>
+        </div>
+      </div>
+
+      <!-- 2. Airports -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-custom p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="feature-icon-box feature-icon-blue mb-0" style="width: 42px; height: 42px; font-size: 1.2rem;">
+              <i class="bi bi-airplane"></i>
+            </div>
+            <h6 class="fw-bold mb-0 text-dark">Airports & Transit</h6>
+          </div>
+          <p class="text-muted small mb-0">High-volume automated screening across terminal security queues, metro turnstiles, and boarding gates.</p>
+        </div>
+      </div>
+
+      <!-- 3. Corporate Offices -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-custom p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="feature-icon-box feature-icon-purple mb-0" style="width: 42px; height: 42px; font-size: 1.2rem;">
+              <i class="bi bi-building"></i>
+            </div>
+            <h6 class="fw-bold mb-0 text-dark">Corporate Offices</h6>
+          </div>
+          <p class="text-muted small mb-0">Integrates with lobby turnstiles and badge access systems to prompt employees before entering elevators.</p>
+        </div>
+      </div>
+
+      <!-- 4. Factories & Plants -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-custom p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="feature-icon-box feature-icon-amber mb-0" style="width: 42px; height: 42px; font-size: 1.2rem;">
+              <i class="bi bi-gear-wide-connected"></i>
+            </div>
+            <h6 class="fw-bold mb-0 text-dark">Factories & Chemical Plants</h6>
+          </div>
+          <p class="text-muted small mb-0">Ensures workers wear industrial dust masks, respirators, and PPE before entering hazardous workshop zones.</p>
+        </div>
+      </div>
+
+      <!-- 5. Educational Campuses -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-custom p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="feature-icon-box feature-icon-blue mb-0" style="width: 42px; height: 42px; font-size: 1.2rem;">
+              <i class="bi bi-mortarboard"></i>
+            </div>
+            <h6 class="fw-bold mb-0 text-dark">Schools & Universities</h6>
+          </div>
+          <p class="text-muted small mb-0">Passive monitoring in crowded dining halls, lecture auditoriums, and indoor sports gymnasiums.</p>
+        </div>
+      </div>
+
+      <!-- 6. Public Centers -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-custom p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="feature-icon-box feature-icon-green mb-0" style="width: 42px; height: 42px; font-size: 1.2rem;">
+              <i class="bi bi-shop"></i>
+            </div>
+            <h6 class="fw-bold mb-0 text-dark">Retail & Shopping Malls</h6>
+          </div>
+          <p class="text-muted small mb-0">Automated entry compliance and real-time dashboard analytics for store safety operators.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. How Our System Works (Visual Pipeline Diagram) -->
+  <div class="card-custom p-4 p-md-5 mb-5 bg-white">
+    <div class="text-center mb-4">
+      <h6 class="text-primary fw-bold text-uppercase">End-to-End Execution Flow</h6>
+      <h3 class="fw-bold text-dark">System Execution Pipeline</h3>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-7">
+        <!-- Step 1 -->
+        <div class="pipeline-step">
+          <div class="badge bg-primary rounded-circle p-2 fs-6"><i class="bi bi-camera"></i></div>
+          <div>
+            <strong class="text-dark d-block">1. Camera / Image Input</strong>
+            <span class="text-muted small">Browser webcam stream via `getUserMedia` or uploaded JPG/PNG image file.</span>
+          </div>
+        </div>
+        <div class="pipeline-arrow"><i class="bi bi-arrow-down"></i></div>
+
+        <!-- Step 2 -->
+        <div class="pipeline-step">
+          <div class="badge bg-info text-dark rounded-circle p-2 fs-6"><i class="bi bi-bounding-box"></i></div>
+          <div>
+            <strong class="text-dark d-block">2. Face Detection (OpenCV)</strong>
+            <span class="text-muted small">Haar Cascade Classifier or Caffe DNN model locates bounding box (x, y, w, h).</span>
+          </div>
+        </div>
+        <div class="pipeline-arrow"><i class="bi bi-arrow-down"></i></div>
+
+        <!-- Step 3 -->
+        <div class="pipeline-step">
+          <div class="badge bg-secondary rounded-circle p-2 fs-6"><i class="bi bi-crop"></i></div>
+          <div>
+            <strong class="text-dark d-block">3. Face Cropping & Preprocessing</strong>
+            <span class="text-muted small">Crops facial region of interest (ROI), converts BGR to RGB, and resizes to 224x224.</span>
+          </div>
+        </div>
+        <div class="pipeline-arrow"><i class="bi bi-arrow-down"></i></div>
+
+        <!-- Step 4 -->
+        <div class="pipeline-step">
+          <div class="badge bg-warning text-dark rounded-circle p-2 fs-6"><i class="bi bi-sliders"></i></div>
+          <div>
+            <strong class="text-dark d-block">4. Image Normalization</strong>
+            <span class="text-muted small">Scales pixel values to [-1, 1] range using MobileNetV2 preprocessing utilities.</span>
+          </div>
+        </div>
+        <div class="pipeline-arrow"><i class="bi bi-arrow-down"></i></div>
+
+        <!-- Step 5 -->
+        <div class="pipeline-step">
+          <div class="badge bg-primary rounded-circle p-2 fs-6"><i class="bi bi-cpu"></i></div>
+          <div>
+            <strong class="text-dark d-block">5. Deep Learning Model (TensorFlow / Keras)</strong>
+            <span class="text-muted small">Pre-trained MobileNetV2 convolutional layers perform feature extraction and Softmax classification.</span>
+          </div>
+        </div>
+        <div class="pipeline-arrow"><i class="bi bi-arrow-down"></i></div>
+
+        <!-- Step 6 -->
+        <div class="pipeline-step">
+          <div class="badge bg-success rounded-circle p-2 fs-6"><i class="bi bi-check2-circle"></i></div>
+          <div>
+            <strong class="text-dark d-block">6. Classification Verdict & Confidence</strong>
+            <span class="text-muted small">Returns binary decision (`Mask` / `No Mask`) with confidence score (e.g., 97.4%).</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Technology Stack Section -->
+  <div class="mb-5">
+    <div class="text-center mb-4">
+      <h6 class="text-primary fw-bold text-uppercase">Full-Stack Technology Suite</h6>
+      <h3 class="fw-bold text-dark">Production Technologies</h3>
+    </div>
+
+    <div class="row g-4">
+      <!-- Python -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-custom p-4 h-100">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-filetype-py text-primary fs-3"></i>
+            <h5 class="fw-bold mb-0 text-dark">Python 3.11+</h5>
+          </div>
+          <p class="text-muted small mb-0">The core programming language powering backend services, scientific matrix transformations, and machine learning models.</p>
+        </div>
+      </div>
+
+      <!-- Django -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-custom p-4 h-100">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-layers-half text-success fs-3"></i>
+            <h5 class="fw-bold mb-0 text-dark">Django 5.x</h5>
+          </div>
+          <p class="text-muted small mb-0">Robust web framework managing user authentication, view routing, database ORM, and REST endpoints for live frames.</p>
+        </div>
+      </div>
+
+      <!-- OpenCV -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-custom p-4 h-100">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-camera-fill text-info fs-3"></i>
+            <h5 class="fw-bold mb-0 text-dark">OpenCV 4.x</h5>
+          </div>
+          <p class="text-muted small mb-0">Open-source computer vision library handling frame decoding, Haar-cascade face detection, and bounding box drawing.</p>
+        </div>
+      </div>
+
+      <!-- TensorFlow / Keras -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-custom p-4 h-100">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-diagram-3-fill text-warning fs-3"></i>
+            <h5 class="fw-bold mb-0 text-dark">TensorFlow & Keras</h5>
+          </div>
+          <p class="text-muted small mb-0">State-of-the-art deep learning framework executing MobileNetV2 transfer learning weights for classification.</p>
+        </div>
+      </div>
+
+      <!-- Bootstrap 5 -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-custom p-4 h-100">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-bootstrap-fill text-purple fs-3" style="color: #7952b3;"></i>
+            <h5 class="fw-bold mb-0 text-dark">Bootstrap 5.3</h5>
+          </div>
+          <p class="text-muted small mb-0">Clean, responsive UI toolkit providing accessible cards, progress meters, modals, and flexible flexbox layouts.</p>
+        </div>
+      </div>
+
+      <!-- SQLite / PostgreSQL -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-custom p-4 h-100">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-database-fill text-secondary fs-3"></i>
+            <h5 class="fw-bold mb-0 text-dark">SQLite / PostgreSQL</h5>
+          </div>
+          <p class="text-muted small mb-0">Relational database storing historical scan events, timestamp logs, confidence records, and user session accounts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Model Specifications Table -->
+  <div class="card-custom p-4">
+    <h5 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+      <i class="bi bi-sliders2-vertical text-primary"></i> Neural Network Specifications & Parameters
+    </h5>
+    <div class="table-responsive">
+      <table class="table table-bordered mb-0 small">
+        <thead class="table-light">
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-bold">Base Backbone</td>
+            <td><code>MobileNetV2</code></td>
+            <td>Lightweight, inverted residual depthwise separable convolutional network optimized for real-time edge devices.</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Input Dimensions</td>
+            <td><code>(224, 224, 3)</code></td>
+            <td>Standard 3-channel RGB image tensor preprocessed with scale range [-1.0, 1.0].</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Classification Head</td>
+            <td><code>AveragePooling2D → Flatten → Dense(128, relu) → Dropout(0.5) → Dense(2, softmax)</code></td>
+            <td>Custom fine-tuned transfer learning top layers with regularization.</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Target Classes</td>
+            <td><code>['Mask', 'No_Mask']</code></td>
+            <td>Binary classification with Softmax probability distribution.</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Benchmark Validation Accuracy</td>
+            <td><span class="badge bg-success">98.6%</span></td>
+            <td>Evaluated across RMFD and Kaggle benchmark test partitions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
