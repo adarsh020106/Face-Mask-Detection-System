@@ -3,22 +3,7 @@
 {% block title %}Analytics Dashboard — FaceGuard AI{% endblock %}
 
 {% block content %}
-<!-- ==========================================================================
-     FaceGuard AI — Analytics Dashboard Page (templates/dashboard.html)
-     
-     BACKEND CONTEXT:
-     Django view (views.dashboard) queries aggregated database metrics:
-     - total_detections: Total records count
-     - mask_count: Total mask records
-     - no_mask_count: Total no_mask records
-     - accuracy: Model test accuracy (e.g. 98.6)
-     - mask_percentage: e.g. 72
-     - no_mask_percentage: e.g. 28
-     - recent_detections: QuerySet of latest 5 records
-     - user: Authenticated officer/admin object
-     ========================================================================== -->
 
-<!-- Dashboard Header Banner -->
 <div class="py-4 bg-white border-bottom">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -42,10 +27,7 @@
 
 <div class="container py-5">
 
-  <!-- 1. Top Four KPI Statistics Metric Cards -->
-  <!-- BACKEND:
-       {{ total_detections }} | {{ mask_count }} | {{ no_mask_count }} | {{ accuracy }}%
-  -->
+ 
   <div class="row g-3 mb-4">
     <div class="col-12 col-sm-6 col-lg-3">
       <div class="stat-card">
@@ -108,9 +90,8 @@
     </div>
   </div>
 
-  <!-- 2. Middle Row: Compliance Summary & Clean Timeline Distribution -->
   <div class="row g-4 mb-4">
-    <!-- Compliance Breakdown -->
+    
     <div class="col-12 col-lg-5">
       <div class="card-custom h-100">
         <div class="card-custom-header">
@@ -144,7 +125,7 @@
             </div>
           </div>
 
-          <!-- Quick Breakdown Callout -->
+          
           <div class="p-3 bg-light rounded-3 border small">
             <div class="d-flex justify-content-between mb-1">
               <span class="text-muted">Peak Compliance Hour:</span>
@@ -159,7 +140,7 @@
       </div>
     </div>
 
-    <!-- Timeline Activity Chart / Distribution Placeholder -->
+   
     <div class="col-12 col-lg-7">
       <div class="card-custom h-100">
         <div class="card-custom-header">
@@ -172,7 +153,7 @@
           <p class="text-muted small mb-3">Visual breakdown of facial scans recorded per two-hour interval across
             security turnstiles.</p>
 
-          <!-- CSS-based Chart Bars Representation -->
+         
           <div class="d-flex align-items-end justify-content-between gap-2 pt-4 pb-2" style="height: 160px;">
             <div class="text-center flex-grow-1">
               <div class="bg-primary-subtle rounded-top mx-auto" style="height: 35px; width: 80%;"></div>
@@ -213,7 +194,7 @@
     </div>
   </div>
 
-  <!-- 3. Bottom Row: Recent Detections & Real-time System Status -->
+  
   <div class="row g-4">
     <!-- Recent 5 Detections Table -->
     <div class="col-12 col-lg-8">
@@ -264,10 +245,10 @@
       </div>
     </div>
 
-    <!-- System Status & Officer Profile Card -->
+  
     <div class="col-12 col-lg-4">
 
-      <!-- System Services Health Card -->
+     
       <div class="card-custom p-4 mb-4">
         <h6 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
           <i class="bi bi-hdd-rack text-primary"></i> System Status
@@ -304,7 +285,7 @@
         </div>
       </div>
 
-      <!-- Officer Profile Card -->
+     
       <div class="card-custom p-4">
         <div class="d-flex align-items-center gap-3 mb-3">
           <div class="brand-icon-wrapper" style="width: 44px; height: 44px; font-size: 1.3rem;">

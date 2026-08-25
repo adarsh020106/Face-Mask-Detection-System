@@ -3,18 +3,11 @@
 {% block title %}Register Account — FaceGuard AI{% endblock %}
 
 {% block content %}
-<!-- ==========================================================================
-     FaceGuard AI — Registration Page (templates/register.html)
-     
-     BACKEND INTEGRATION:
-     Django Registration View handles POST request:
-     - Form: Custom UserCreationForm or django.contrib.auth.models.User
-     - Creates new user record and logs them in or redirects to 'login'
-     ========================================================================== -->
+
 
 <div class="auth-wrapper">
   <div class="auth-card" style="max-width: 520px;">
-    <!-- Brand Header -->
+   
     <div class="text-center mb-4">
       <div class="brand-icon-wrapper mb-3" style="width: 48px; height: 48px; font-size: 1.5rem; margin: 0 auto;">
         <i class="bi bi-person-plus"></i>
@@ -23,27 +16,12 @@
       <p class="text-muted small">Register a safety administrator or security officer profile</p>
     </div>
 
-    <!-- Django Form Field Errors (If any returned by backend) -->
-    <!-- BACKEND:
-    {% if form.errors %}
-      <div class="alert alert-danger py-2 px-3 small rounded-3 mb-3" role="alert">
-        <ul class="mb-0 ps-3">
-          {% for field in form %}
-            {% for error in field.errors %}
-              <li><strong>{{ field.label }}:</strong> {{ error }}</li>
-            {% endfor %}
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
-    -->
-
-    <!-- Register Form -->
+    
     <form method="POST" action="{% url 'register' %}">
-      <!-- Django CSRF Protection Token -->
+      
       {% csrf_token %}
 
-      <!-- Full Name -->
+      
       <div class="mb-3">
         <label for="fullNameInput" class="form-label fw-semibold small text-dark">
           Full Name
@@ -62,7 +40,7 @@
         </div>
       </div>
 
-      <!-- Username & Email (Two Column Row) -->
+    
       <div class="row g-2 mb-3">
         <div class="col-12 col-md-6">
           <label for="regUsernameInput" class="form-label fw-semibold small text-dark">
@@ -102,7 +80,7 @@
         </div>
       </div>
 
-      <!-- Password & Confirm Password (Two Column Row) -->
+    
       <div class="row g-2 mb-3">
         <div class="col-12 col-md-6">
           <label for="regPasswordInput" class="form-label fw-semibold small text-dark">
@@ -142,7 +120,6 @@
         </div>
       </div>
 
-      <!-- Terms & Safety Policy Agreement -->
       <div class="mb-4 form-check">
         <input type="checkbox" class="form-check-input" id="agreeTerms" required>
         <label class="form-check-label small text-muted" for="agreeTerms">
@@ -150,13 +127,13 @@
         </label>
       </div>
 
-      <!-- Submit Button -->
+      
       <button type="submit" class="btn btn-primary-custom w-100 py-2 justify-content-center">
         <i class="bi bi-person-check"></i> Create Account
       </button>
     </form>
 
-    <!-- Login Link -->
+   
     <div class="text-center mt-4 pt-3 border-top">
       <p class="text-muted small mb-0">
         Already have an account? 

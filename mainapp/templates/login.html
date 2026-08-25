@@ -3,19 +3,11 @@
 {% block title %}Sign In — FaceGuard AI{% endblock %}
 
 {% block content %}
-<!-- ==========================================================================
-     FaceGuard AI — Login Page (templates/login.html)
-     
-     BACKEND INTEGRATION:
-     Django Authentication view handles POST request:
-     - Form: django.contrib.auth.forms.AuthenticationForm or custom Login form
-     - Validates credentials against Django auth_user table
-     - Sets session cookie upon successful login and redirects to 'dashboard'
-     ========================================================================== -->
+
 
 <div class="auth-wrapper">
   <div class="auth-card">
-    <!-- Brand Icon & Heading -->
+   
     <div class="text-center mb-4">
       <div class="brand-icon-wrapper mb-3" style="width: 48px; height: 48px; font-size: 1.5rem; margin: 0 auto;">
         <i class="bi bi-shield-check"></i>
@@ -24,21 +16,12 @@
       <p class="text-muted small">Sign in to access the detection console and audit logs</p>
     </div>
 
-    <!-- Django Flash Messages (Specific to Auth) -->
-    <!-- BACKEND:
-    {% if form.errors %}
-      <div class="alert alert-danger py-2 px-3 small rounded-3" role="alert">
-        <i class="bi bi-exclamation-circle-fill me-1"></i> Invalid username or password. Please try again.
-      </div>
-    {% endif %}
-    -->
-
-    <!-- Login Form -->
+    
+   
     <form method="POST" action="{% url 'login' %}">
-      <!-- Django CSRF Protection Token -->
+      
       {% csrf_token %}
 
-      <!-- Email / Username Field -->
       <div class="mb-3">
         <label for="usernameInput" class="form-label fw-semibold small text-dark">
           Username or Email Address
@@ -58,7 +41,7 @@
         </div>
       </div>
 
-      <!-- Password Field -->
+     
       <div class="mb-3">
         <div class="d-flex justify-content-between align-items-center mb-1">
           <label for="passwordInput" class="form-label fw-semibold small text-dark mb-0">
@@ -81,7 +64,7 @@
         </div>
       </div>
 
-      <!-- Remember Me Checkbox -->
+     
       <div class="mb-4 form-check">
         <input type="checkbox" class="form-check-input" id="rememberMeCheckbox" name="remember_me">
         <label class="form-check-label small text-muted" for="rememberMeCheckbox">
@@ -89,13 +72,12 @@
         </label>
       </div>
 
-      <!-- Submit Button -->
       <button type="submit" class="btn btn-primary-custom w-100 py-2 justify-content-center">
         <i class="bi bi-box-arrow-in-right"></i> Sign In to FaceGuard
       </button>
     </form>
 
-    <!-- Register Footer Link -->
+   
     <div class="text-center mt-4 pt-3 border-top">
       <p class="text-muted small mb-0">
         Don't have an account? 
@@ -105,7 +87,7 @@
       </p>
     </div>
 
-    <!-- Django Developer Note -->
+    
     <div class="mt-4 p-2 bg-light rounded-3 text-center border">
       <span class="django-tag-pill">Django Auth</span>
       <p class="text-muted mb-0" style="font-size: 0.75rem; margin-top: 4px;">

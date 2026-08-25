@@ -1,14 +1,4 @@
-<!-- ==========================================================================
-     FaceGuard AI — Reusable Prediction Result Card Component (templates/components/prediction_card.html)
-     ========================================================================== -->
-<!-- BACKEND:
-Prediction variables supplied by Django View:
-- prediction: "Mask" or "No Mask"
-- confidence: e.g. 96.85 (percentage)
-- inference_time: e.g. "42ms"
-- timestamp: e.g. "Aug 21, 2026 09:30 AM"
-- image_url: URL to processed or cropped image
--->
+
 <div class="card-custom shadow-sm">
   <div class="card-custom-header">
     <span class="fw-bold text-dark d-flex align-items-center gap-2">
@@ -23,7 +13,7 @@ Prediction variables supplied by Django View:
     </span>
   </div>
   <div class="card-custom-body">
-    <!-- Main Result Callout -->
+    
     <div class="prediction-result-banner {% if prediction == 'Mask' or prediction == 'mask' or is_mask %}mask-detected{% else %}no-mask-detected{% endif %}">
       <h3 class="fw-bold mb-1 d-flex align-items-center justify-content-center gap-2">
         {% if prediction == 'Mask' or prediction == 'mask' or is_mask %}
@@ -37,7 +27,6 @@ Prediction variables supplied by Django View:
       </p>
     </div>
 
-    <!-- Confidence Score Metric -->
     <div class="mb-3">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <span class="text-muted small fw-semibold">Model Confidence</span>
@@ -55,7 +44,7 @@ Prediction variables supplied by Django View:
       </div>
     </div>
 
-    <!-- Detection Metadata Grid -->
+    
     <div class="row g-2 pt-2 border-top text-muted small">
       <div class="col-6">
         <span class="d-block text-secondary">Inference Latency</span>

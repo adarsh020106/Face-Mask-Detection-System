@@ -3,20 +3,9 @@
 {% block title %}Detection Result — FaceGuard AI{% endblock %}
 
 {% block content %}
-<!-- ==========================================================================
-     FaceGuard AI — ML Result Page (templates/result.html)
-     
-     BACKEND CONTEXT:
-     Django view (views.result or views.image_detection POST response) provides:
-     - prediction: "Mask" or "No Mask"
-     - confidence: Float percentage (e.g. 96.85)
-     - image_url: Static/media path to the input or bounding-box image
-     - inference_time: String (e.g. "36ms")
-     - timestamp: Formatted date string (e.g. "Aug 21, 2026 09:30 AM")
-     - status: "Success" or "Processed"
-     ========================================================================== -->
 
-<!-- Result Header Banner -->
+
+
 <div class="py-4 bg-white border-bottom">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -42,7 +31,7 @@
 <div class="container py-5">
   <div class="row g-4">
     
-    <!-- Left Column: Input / Processed Image Display -->
+    
     <div class="col-12 col-lg-6">
       <div class="card-custom h-100">
         <div class="card-custom-header">
@@ -55,7 +44,7 @@
         </div>
         <div class="card-custom-body d-flex flex-column align-items-center justify-content-center">
           <div class="image-preview-container w-100 mb-3" style="max-height: 380px;">
-            <!-- BACKEND: {{ image_url }} -->
+          
             <img 
               src="{{ image_url|default:'https://images.unsplash.com/photo-1584634731339-252c581abfc5?w=600&auto=format&fit=crop&q=80' }}" 
               alt="Analyzed Face Frame" 
@@ -69,17 +58,16 @@
       </div>
     </div>
 
-    <!-- Right Column: Prediction Metrics & Classification Card -->
     <div class="col-12 col-lg-6">
       
-      <!-- Primary Prediction Card -->
+     
       <div class="card-custom shadow-sm mb-4">
         <div class="card-custom-header">
           <span class="fw-bold text-dark d-flex align-items-center gap-2">
             <i class="bi bi-cpu text-primary"></i> Deep Learning Verdict
           </span>
           
-          <!-- Dynamic Status Badge -->
+          
           <span class="{% if prediction == 'No Mask' or prediction == 'no_mask' %}badge-no-mask{% else %}badge-mask{% endif %}">
             {% if prediction == 'No Mask' or prediction == 'no_mask' %}
               <i class="bi bi-x-circle-fill"></i> Non-Compliant
@@ -90,7 +78,7 @@
         </div>
 
         <div class="card-custom-body">
-          <!-- Large Visual Prediction Callout Banner -->
+        
           <div class="prediction-result-banner {% if prediction == 'No Mask' or prediction == 'no_mask' %}no-mask-detected{% else %}mask-detected{% endif %}">
             <h2 class="fw-bold mb-1 d-flex align-items-center justify-content-center gap-2">
               {% if prediction == 'No Mask' or prediction == 'no_mask' %}
@@ -104,7 +92,7 @@
             </p>
           </div>
 
-          <!-- Confidence Score Gauge -->
+          
           <div class="mb-4">
             <div class="d-flex justify-content-between align-items-center mb-1">
               <span class="text-muted small fw-semibold">Prediction Confidence</span>
@@ -112,7 +100,7 @@
             </div>
             
             <div class="progress confidence-progress">
-              <!-- BACKEND: style="width: {{ confidence }}%" -->
+              
               <div 
                 class="progress-bar {% if prediction == 'No Mask' or prediction == 'no_mask' %}bg-danger{% else %}bg-success{% endif %}" 
                 role="progressbar" 
@@ -124,7 +112,7 @@
             </div>
           </div>
 
-          <!-- Comprehensive Inspection Details Table -->
+       
           <div class="table-responsive mb-3">
             <table class="table table-sm table-borderless small mb-0">
               <tbody>
@@ -148,7 +136,7 @@
             </table>
           </div>
 
-          <!-- Navigation CTAs -->
+         
           <div class="d-flex flex-wrap gap-2 pt-3 border-top">
             <a href="{% url 'image_detection' %}" class="btn btn-primary-custom flex-grow-1 justify-content-center">
               <i class="bi bi-arrow-repeat"></i> Detect Another Image
